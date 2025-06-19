@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+
+// Importando todas as páginas
+import Login from './pages/Login';
+import Cadastro from './pages/Cadastro';
+import EscolherPerfil from './pages/EscolherPerfil';
+import EscolherPcd from './pages/EscolherPcd';
+import Home from './pages/Home';
+import Aprender from './pages/Aprender';
+import Atendente from './pages/Atendente';
+import Servicos from './pages/Servicos';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [pagina, setPagina] = useState("login");
+  const [perfil, setPerfil] = useState("");
+  const [pcdSelecionados, setPcdSelecionados] = useState([]);
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  const togglePcd = (tipo) => {
+    setPcdSelecionados(prev =>
+      prev.includes(tipo) ? prev.filter(p => p !== tipo) : [...prev, tipo]
+    );
+  };
+
+  const props = { setPagina, setPerfil, perfil, pcdSelecionados, togglePcd };
+
+  switch (pagina) {
+    case "cadastro": return <Cadastro {...props} />;
+    case "perfil": return <EscolherPerfil {...props} />;
+    case "pcd": return <EscolherPcd {...props} />;
+    case "home": return <Home {...props} />;
+    case "aprender": return <Aprender {...props} />;
+    case "atendente": return <Atendente {...props} />;
+    case "servicos": return <Servicos {...props} />;
+    default: return <Login {...props} />;
+  }
 }
 
-export default App
+export default App;

@@ -2,7 +2,7 @@ import React from "react";
 
 function Servicos({ setPagina }) {
     return (
-      <div className="min-h-screen bg-[#F4F6F7] p-6 flex flex-col">
+      <div className="min-h-screen items-center bg-[#F4F6F7] p-6 flex flex-col">
         <h2 className="text-2xl font-bold text-[#F28E2B] mb-6">Meus Serviços</h2>
         <ul className="space-y-4 flex-grow">
           <li className="bg-white p-4 rounded-xl shadow flex items-center gap-3 text-lg">🩺 SUS</li>
