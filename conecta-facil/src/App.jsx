@@ -8,7 +8,7 @@ import EscolherPcd from './pages/EscolherPcd';
 import Home from './pages/Home';
 import Aprender from './pages/Aprender';
 import Atendente from './pages/Atendente';
-import Servicos from './pages/Servicos';
+
 
 function App() {
   const [pagina, setPagina] = useState("login");
